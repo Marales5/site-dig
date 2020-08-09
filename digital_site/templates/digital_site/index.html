@@ -1,0 +1,14 @@
+{% extends 'digital_site/base_blog.html'%}
+
+{% block title %}
+    Posts list
+{% endblock %}
+
+{% block content %}
+{%for n in posts.object_list %}
+
+ {% include 'digital_site/includes/post_card_template.html' %}
+
+{% endfor %}
+<!--{{ n.get_absolute_url }}-->
+{% endblock %}

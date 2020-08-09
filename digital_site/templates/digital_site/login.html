@@ -1,0 +1,39 @@
+{% extends 'digital_site/base_blog.html'%}
+
+{% block content %}
+<h1> Authentication </h1>
+{{ request.user }}
+ {% if request.user.is_superuser %}
+<h3> вы зашли под администратором </h3>
+ {% else %}
+      <h3> нет доступа </h3>
+
+<form id="add_form" method="post">
+
+          {% csrf_token %}
+
+
+
+    {% for n in form %}
+
+                    <div class="form-group" >
+                        {% if n.errors %}
+                        <div class="alert alert-danger" role="alert">
+                             {{n.errors}}
+                         </div>
+                        {% endif %}
+                        {{n.label}}
+                        {{ n }}
+                    </div>
+            {% endfor %}
+
+
+
+</form>
+
+ <button form="add_form" type="submit" class="btn btn-primary"> Войти </button>
+{% endif %}
+
+{% endblock content %}
+
+
